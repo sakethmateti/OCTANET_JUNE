@@ -1,168 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Home
-    </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
 
-    <link rel="icon" href="seenu_mawa.png">
+    h1 {
+      text-align: center;
+    }
+
+    .todo-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .todo-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .todo-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .todo-item input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    .todo-item span {
+      flex-grow: 1;
+    }
+  </style>
 </head>
 <body background="64acbd6404955f28448bb7f318e78aa5.jpg">
-    <div style="text-align: center;" class="pt-3">
-        <h1>
-            SOCIAL MEDIA
-        </h1>
-    </div>
+  <div class="todo-container">
+    <h1>To-Do List</h1>
+    <input class="todo-input" type="text" placeholder="Enter a task" />
+    <div class="todo-list"></div>
+  </div>
 
-    <div class="pt-5"></div>
-    <div class="pt-3"></div>
-    <div class="container-fluid pt-5">
-        <div class="row">
-            <div class="col-sm-3">
-                <div>
-                    <img style="height: 20%; width: 20%; " src="facebook.png" alt="facebook">
-                    <a style="color:rgb(109, 100, 237);" target="_blank" href="https://www.facebook.com//">
-                        <b>
-                            Facebook
-                        </b>
-                    </a>
-                    <div class="pt-2">
-                        <p>
-                            <b>
-                                Social media platform with billions of active users worldwide.
-                            </b>
-                        </p>
-                    </div>
-                            
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div>
-                    <img style="height: 20%; width: 20%; " src="messenger.png" alt="messenger">
-                    <a style="color:rgb(42, 153, 222);" target="_blank" href="https://www.messenger.com/">
-                        <b>
-                            Messenger
-                        </b>
-                    </a>
-                    <div class="pt-2">
-                        <p>
-                            <b>
-                                Messenger offers end-to-end encryption for secure private messaging.
-                            </b>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div><img style="height: 20%; width: 20%; " src="instagram.png" alt="instagram">
-                    <a style="color:rgba(245, 0, 155, 0.707);" target="_blank" href="https://www.instagram.com/">
-                        <b>
-                            Instagram
-                        </b>
-                    </a>
-                    <div class="pt-2">
-                        <p>
-                            <b>
-                                Instagram allows users to share photos and videos with followers.
-                            </b>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div><img style="height: 20%; width: 20%; " src="snapchat.png" alt="snapchat">
-                    <a style="color:rgb(213, 215, 95);" target="_blank" href="https://www.snapchat.com/">
-                        <b>
-                            Snapchat
-                        </b>
-                    </a>
-                    <div class="pt-2">
-                        <p>
-                            <b>
-                                Snapchat is known for its disappearing photo and video messages.
-                            </b>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <div class="pt-2">
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const todoInput = document.querySelector(".todo-input");
+      const todoList = document.querySelector(".todo-list");
 
-            </div>
-            <div class="row pt-5">
+      todoInput.addEventListener("keydown", function(event) {
+        if (event.key === "Enter" && todoInput.value.trim() !== "") {
+          const todoItem = createTodoItem(todoInput.value);
+          todoList.appendChild(todoItem);
+          todoInput.value = "";
+        }
+      });
 
-            <div class="col-sm-3">
-                <div><img style="height: 20%; width: 20%; " src="whatsapp.png" alt="whatsapp">
-                    <a style="color:rgba(3, 157, 157, 0.796);" target="_blank" href="https://web.whatsapp.com/">
-                        <b>
-                            Whatsapp
-                        </b>
-                    </a>
-                    <div class="pt-2">
-                        <p>
-                            <b>
-                                End-to-end encryption secures messages on WhatsApp for user privacy.
-                            </b>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div><img style="height: 20%; width: 20%; " src="twitter.png" alt="twitter">
-                    <a style="color:rgb(114, 218, 234);" target="_blank" href="https://twitter.com/i/flow/login">
-                        <b>
-                            Twitter
-                        </b>
-                    </a>
-                    <div class="pt-2">
-                        <p>
-                            <b>
-                                Twitter allows users to share short messages and media content.
-                            </b> 
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div><img style="height: 20%; width: 20%; " src="linkedin.png" alt="linkedin">
-                    <a style="color:rgba(114, 199, 255, 0.564);" target="_blank" href="https://in.linkedin.com/">
-                        <b>
-                            Linkedin
-                        </b>
-                    </a>
-                    <div class="pt-2">
-                        <p>
-                            <b>
-                                Professional networking platform connecting individuals and fostering career opportunities.
-                            </b>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div><img style="height: 20%; width: 20%; " src="youtube.png" alt="youtube">
-                    <a style="color:rgb(201, 63, 90);" target="_blank" href="https://www.youtube.com/">
-                        <b>
-                            Youtube
-                        </b>
-                    </a>
-                    <div class="pt-2">
-                        <p>
-                            <b>
-                                Second most visited website, hosting diverse user-generated video content.
-                            </b>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+      function createTodoItem(text) {
+        const todoItem = document.createElement("div");
+        todoItem.className = "todo-item";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        todoItem.appendChild(checkbox);
+
+        const span = document.createElement("span");
+        span.textContent = text;
+        todoItem.appendChild(span);
+
+        return todoItem;
+      }
+    });
+  </script>
 </body>
 </html>
