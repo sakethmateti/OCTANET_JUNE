@@ -1,80 +1,180 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>To-Do List</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
-    h1 {
-      text-align: center;
-    }
-
-    .todo-container {
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    .todo-input {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    .todo-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .todo-item input[type="checkbox"] {
-      margin-right: 10px;
-    }
-
-    .todo-item span {
-      flex-grow: 1;
-    }
-  </style>
-</head>
-<body background="64acbd6404955f28448bb7f318e78aa5.jpg">
-  <div class="todo-container">
-    <h1>To-Do List</h1>
-    <input class="todo-input" type="text" placeholder="Enter a task" />
-    <div class="todo-list"></div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const todoInput = document.querySelector(".todo-input");
-      const todoList = document.querySelector(".todo-list");
-
-      todoInput.addEventListener("keydown", function(event) {
-        if (event.key === "Enter" && todoInput.value.trim() !== "") {
-          const todoItem = createTodoItem(todoInput.value);
-          todoList.appendChild(todoItem);
-          todoInput.value = "";
-        }
-      });
-
-      function createTodoItem(text) {
-        const todoItem = document.createElement("div");
-        todoItem.className = "todo-item";
-
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        todoItem.appendChild(checkbox);
-
-        const span = document.createElement("span");
-        span.textContent = text;
-        todoItem.appendChild(span);
-
-        return todoItem;
-      }
-    });
-  </script>
-</body>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Google Drive</title>
+  </head>
+  <body>
+    <div class="navbar-fixed">
+      <nav class="nav-extended white">
+        <div class="nav-wrapper white">
+          <ul>
+            <li>
+              <a href="#!" class="title grey-text text-darken-1"
+                >Google Drive</a
+              >
+            </li>
+          </ul>
+          <div class="search-wrapper">
+            <i class="material-icons">search</i>
+            <input type="search" name="Search" placeholder="Search Drive" />
+          </div>
+          <ul class="right">
+            <li>
+              <a href="#!"
+                ><i class="material-icons grey-text text-darken-1">apps</i></a
+              >
+            </li>
+            <li>
+              <a href="#!"
+                ><i class="material-icons grey-text text-darken-1"
+                  >notifications</i
+                ></a
+              >
+            </li>
+            <li>
+              <a href="#!"
+                ><img src="seenu_mawa.png" alt="profile picture" class="circle"
+              /></a>
+            </li>
+          </ul>
+        </div>
+        <div class="nav-wrapper nav-2">
+          <ul>
+            <li>
+              <a
+                href="#!"
+                class="waves-effect waves-light btn btn-flat white-text"
+                >New</a
+              >
+            </li>
+          </ul>
+          <ul class="right">
+            <li>
+              <a href="#!"
+                ><i class="material-icons grey-text text-darken-1"
+                  >view_list</i
+                ></a
+              >
+            </li>
+            <li>
+              <a href="#!"
+                ><i class="material-icons grey-text text-darken-1">info</i></a
+              >
+            </li>
+            <li>
+              <a href="#!"
+                ><i class="material-icons grey-text text-darken-1"
+                  >settings</i
+                ></a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <ul class="side-nav fixed floating transparent z-depth-0">
+      <li class="active">
+        <a href="#"
+          ><i class="material-icons blue-text text-darken-1">dashboard</i>My
+          Drive</a
+        >
+      </li>
+      <li>
+        <a href="#"><i class="material-icons">devices</i>Computers</a>
+      </li>
+      <li>
+        <a href="#"><i class="material-icons">people</i>Shared with me</a>
+      </li>
+      <li>
+        <a href="#"><i class="material-icons">access_time</i>Recent</a>
+      </li>
+      <li>
+        <a href="#"><i class="material-icons">camera</i>Google Photos</a>
+      </li>
+      <li>
+        <a href="#"><i class="material-icons">star</i>Starred</a>
+      </li>
+      <li>
+        <a href="#"><i class="material-icons">delete</i>Trash</a>
+      </li>
+      <li><div class="divider"></div></li>
+      <li>
+        <a href="#"><i class="material-icons">cloud</i>Backup</a>
+      </li>
+      <li><div class="divider"></div></li>
+      <li>
+        <a href="#"><i class="material-icons">storage</i>Upgrade Storage</a>
+      </li>
+    </ul>
+    <div class="main">
+      <div class="container-fluid">
+        <p class="subheader">Folders</p>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+        <div class="card-panel folder">
+          <i class="material-icons left">folder</i>Folder
+        </div>
+      </div>
+    </div>
+    
+  </body>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </html>
